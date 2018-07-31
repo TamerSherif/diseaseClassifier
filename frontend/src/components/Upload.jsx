@@ -22,6 +22,7 @@ export default class Upload extends React.Component {
     })
   }
   onChange(e) {
+    console.log(this)
     this.setState({file:e.target.files[0]})
   }
   fileUpload(file){
