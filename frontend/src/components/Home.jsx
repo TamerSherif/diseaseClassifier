@@ -8,7 +8,8 @@ export default class Home extends Component {
     return (
       <div>
         <Navigation />
-        <h2>this is the main page</h2> 
+        <br />
+        <h1 className="text-info col-md-auto">This is the main page</h1> 
       </div>
     );
   }
