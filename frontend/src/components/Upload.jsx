@@ -4,6 +4,7 @@ import Navigation from './navbar';
 import axios, { post } from 'axios';
 import 'reactstrap';
 
+
 export default class Upload extends React.Component {
 
   constructor(props) {
@@ -26,15 +27,19 @@ export default class Upload extends React.Component {
     this.setState({file:e.target.files[0]})
   }
   fileUpload(file){
-    const url = 'http://example.com/file-upload';
-    const formData = new FormData();
-    formData.append('file',file)
+    axios.defaults.xsrfCookieName = 'csrftoken'
+    axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+    const url = 'http://localhost:8000/uploadFile/';
+    let formData = new FormData();
+    console.log(formData.name)
+    formData.append('file', file)
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
         }
     }
-    return  post(url, formData,config)
+    //post request
+    return  post(url, formData, config)
   }
 
   render() {

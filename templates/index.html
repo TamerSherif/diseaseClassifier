@@ -7,6 +7,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    {% csrf_token %}
+    {{ form.as_p }}
     <title>Ponynote</title>
   </head>
   <body>

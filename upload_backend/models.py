@@ -8,19 +8,13 @@ from django.db import models
 # Creates a file table:
 class FileUpload(models.Model):
 
-    filename = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, blank=True)
     file = models.FileField(upload_to='input_files/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
     #uploaded_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.filename
+        return self.name
 
 
 
-
-'''
-class Test(models.Model):
-    name = models.CharField(max_length=250)
-#we can edit the DB using the django admin:
-#we use python manage.py createsuperuser to create the admin user
-'''
