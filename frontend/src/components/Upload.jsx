@@ -35,7 +35,7 @@ export default class Upload extends React.Component {
     let formData = new FormData();
     console.log(file.name)
 
-    //append the two main attributes, the file itself and its name
+    //append the two main attributes/fields, the file itself and its name
     formData.append('file', file)
     formData.append('name', file.name)
 
