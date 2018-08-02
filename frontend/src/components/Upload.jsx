@@ -27,12 +27,18 @@ export default class Upload extends React.Component {
     this.setState({file:e.target.files[0]})
   }
   fileUpload(file){
+    //we need the csrf token in order for django to auth the form properly!
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
     const url = 'http://localhost:8000/uploadFile/';
     let formData = new FormData();
-    console.log(formData.name)
+    console.log(file.name)
+
+    //append the two main attributes, the file itself and its name
     formData.append('file', file)
+    formData.append('name', file.name)
+
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
