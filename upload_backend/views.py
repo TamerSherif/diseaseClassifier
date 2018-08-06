@@ -15,7 +15,6 @@ def uploadFile(request):
             form.save()
             print 'upload successful'
 
-
     else:
         form = FileUploadForm()
         print 'upload unsuccessful'
