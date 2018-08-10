@@ -34,7 +34,7 @@ export default class Upload extends React.Component {
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
-    const url = 'http://localhost:8000/uploadFile/';
+    const url = 'http://localhost:8000/api/file_upload/';
     let formData = new FormData();
     console.log(file.name)
 

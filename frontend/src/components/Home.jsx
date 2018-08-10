@@ -3,38 +3,21 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios, { get } from 'axios';
 import 'reactstrap';
-import PropTypes from 'prop-types';
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.fileget = this.fileget.bind(this)
-  }
-  onFormSubmit(e){
-    e.preventDefault() // Stop form submit
-    this.fileget().then((response)=>{
-      console.log(response.data);
-      //this is where we can decide what to do with the response data.
-    })
+  constructor() {
+    super()
+    this.state = { items: [] }
   }
 
-  renderList() {
-    return this.fileget().then(function(response){
-      let data = this.props.response.data
-      const Test = ({data}) => (
-        <div>
-          {data.map(item => (
-            <div className="listItems" key={item.name}>{item.name}</div>
-          ))}
-        </div>
-      );    
-      return Test; 
+  componentDidMount() {
+    let items = [];
 
+    this.fileget()
+      .then(response => {
+        this.setState({ items: response.data })
       })
-
-
-    }
+  }
 
   fileget(){
     //we need the csrf token in order for django to auth the form properly!
@@ -47,16 +30,19 @@ export default class Home extends Component {
   }
 
 
-
   render() {
     return (
+      
       <div>
+        <Navigation />
+        <h1>Upload List</h1>
         <ul>
-          {console.log('hello')}
-          { this.renderList() }
+          {this.state.items.map(item => {
+            return <li key={`item-${item.file}`}><button> {item.file} </button></li> 
+          })}
         </ul>
-      </div>   
-
-   )
+      </div>
+    )
   }
+
 }
