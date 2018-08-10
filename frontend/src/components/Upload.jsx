@@ -20,7 +20,7 @@ export default class Upload extends React.Component {
     e.preventDefault() // Stop form submit
     this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
-      //this is where we can decide what to do with the response data
+      //this is where we can decide what to do with the response data.
     })
   }
   onChange(e) {
@@ -34,7 +34,7 @@ export default class Upload extends React.Component {
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
-    const url = 'http://localhost:8000/api/file_upload/';
+    const url = 'http://localhost:8000/uploadFile/';
     let formData = new FormData();
     console.log(file.name)
 
@@ -62,7 +62,6 @@ export default class Upload extends React.Component {
         <div className="col-md-auto">
         <input type="file" onChange={this.onChange} />
         <button type="submit">Upload</button>
-        <button type="getFiles">Get Files</button>
         </div>
       </form>
    )
