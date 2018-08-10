@@ -35,10 +35,10 @@ export default class Home extends Component {
       
       <div>
         <Navigation />
-        <h1>Upload List</h1>
+        <br /><h1 className="text-info col-md-auto">Upload Results After Analysis</h1>
         <ul>
           {this.state.items.map(item => {
-            return <li key={`item-${item.file}`}><button> {item.file} </button></li> 
+            return <ul key={`item-${item.name}`}><br /><button type="button" className="btn btn-dark">{item.name}</button></ul> 
           })}
         </ul>
       </div>
